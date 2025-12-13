@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+instance/
+uploads/
+*.pyc
+*.pyo
+*.pyd
+.env
+env/
+*.db
+service-account.json

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="container">
+    <h2>Files</h2>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">Upload</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Size (bytes)</th>
+          <th>Updated</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for name, size, updated in files %}
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ size }}</td>
+          <td>{{ updated }}</td>
+          <td>
+            <a href="/download/{{ name }}">Download</a>
+            <a href="/delete/{{ name }}" onclick="return confirm('Delete {{ name }}?')">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
